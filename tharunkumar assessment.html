@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+  	body {
+  		background-image:url("image.jpg");
+  	}
+  </style>
+
+<script type="text/javascript">
+
+	type=['graduation','post-graduation'];
+	data=[['select branch','cse','ece','eee','mech','civil'],['select branch','master of arts','master of science']];
+	
+    function fillDD()
+    {
+	var Typedd=document.getElementById('type');
+	for(i=0;i<type.length;i++)
+    {
+     var ele=document.createElement('option');
+     ele.text=type[i];
+     Typedd.add(ele,i+1);
+    }
+    }
+
+    function fillData()
+    {
+
+      var Typedd =document.getElementById('type');
+      var selectedIdx= Typedd.selectedIndex;
+
+      var Datadd =document.getElementById('data') ;
+      Datadd.innerText=null;
+      for(i=0;i<data[selectedIdx-1].length;i++)
+      {
+       var ele=document.createElement('option');
+       ele.text=data[selectedIdx-1][i];
+       Datadd.add(ele,i+1);
+
+      } 
+
+    }
+
+function dobValidate() {
+
+var date= new Date();
+
+var year=date.getFullYear();
+var month=date.getMonth()+1;
+var dd=date.getDate();
+
+if(month<10)
+{
+month='0'+month;
+}
+if(dd<10)
+{
+dd=0+""+dd;
+}
+
+document.getElementById('dob').max=(year-18) +"-"+month+"-"+dd;
+
+}
+
+
+</script>
+
+
+
+</head>
+<body  onload="fillDD()">
+
+
+<div  class="container"  style="text-align: center;" >
+             
+  <img src="images.jpg"  class="rounded-circle" width="304" height="236"> 
+
+
+<br>
+<br>
+<br>
+<fieldset style="text-align: center;">
+  <legend style="color:white">SIGN-UP</legend>
+  <input type="email" name="" placeholder="email">
+  <br><br>
+  <input type="password" name="" placeholder="password">
+  <br><br>
+  <input type="password" name="" placeholder="confirm password">
+  <br><br>
+  
+
+  <select id="type" onchange="fillData()">
+<option>select qualification</option>
+</select>
+<br><br>
+
+
+<select id="data">
+<option>SELECT</option>
+</select>
+ <br><br>
+
+ <input type="date" id="dob" onclick="dobValidate()">
+
+ <br><br>
+  <input type="submit" name="">
+</fieldset>
+
+</div>
+
+</body>
+</html>>
+
